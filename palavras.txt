@@ -1,0 +1,17 @@
+melancia
+morango
+laranja
+uva
+abacaxi
+abacate
+amora
+cereja
+tomate
+jaboticaba
+banana
+groselha
+goiaba
+lima
+pessego
+coco
+
