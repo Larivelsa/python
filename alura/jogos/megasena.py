@@ -1,0 +1,1 @@
+﻿# gerar conjunto de jogos

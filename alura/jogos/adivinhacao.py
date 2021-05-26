@@ -46,7 +46,7 @@ def jogar():
 
         rodada = rodada + 1
 
-    print("Fim do jogo.")
+    print(f"Fim do jogo. O número secreto era {numero_secreto}.")
 
 
 if(__name__ == "__main__"):
