@@ -12,8 +12,15 @@
     def deposita(self, valor):
         self.__saldo += valor
 
+    def __pode_sacar(self, valor_a_sacar):
+        valor_disponivel = self.__saldo + self.__limite
+        return valor_a_sacar <= valor_disponivel
+
     def saca(self, valor):
-        self.__saldo -= valor
+        if (self.__pode_sacar(valor)):
+            self.__saldo -= valor
+        else:
+            print(f"Não foi possível realiza o saque de R$ {valor}.")
 
     def transfere(self, valor, destino):
         self.saca(valor)
@@ -33,5 +40,18 @@
     def limite(self, limite):
         self.__limite = limite
 
+    # métodos estáticos são métodos da classe
+    # (todos objetos compartilham os mesmos métodos) e não do objeto
+    # a forma de chamar o método é assim: Classe.metodo_estatico()
+    @staticmethod
+    def codigo_banco():
+        return "001"
 
-conta = Conta(12, 'larissa', 500, 8000)
+    @staticmethod
+    def codigos_bancos():
+        return {'BB': '001', 'Caixa': '104', 'Bradesco': '237'}
+
+
+conta = Conta(12, 'larissa', 500, 1000)
+Conta.codigos_bancos()
+conta.saca(200080)
