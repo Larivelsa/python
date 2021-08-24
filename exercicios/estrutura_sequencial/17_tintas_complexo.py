@@ -14,14 +14,22 @@ que custam R$ 80,00 ou em galões de 3,6 litros, que custam R$ 25,00.
 import math
 
 area_pintada = float(input("Informe a quantidade de m² a ser pintada: "))
-quantidade_litros = area_pintada / 6
+quantidade_litros = (area_pintada / 6) * 1.1
+
 
 if quantidade_litros < 18:
     latas_menores_apenas = quantidade_litros / 3.6
+
+    if latas_menores_apenas < 1:
+        latas_menores_apenas = 1
+    else:
+        latas_menores_apenas = math.ceil(latas_menores_apenas)
     print(f"Quantidade de litros: {quantidade_litros:.2f} e quantidade de latas de 3.6: {latas_menores_apenas}")
+
+
 elif quantidade_litros % 18 == 0:
     latas_maiores_apenas = quantidade_litros / 18
-    print(f"Quantidade de litros: {quantidade_litros:.2f} e quantidade de latas de 18: {latas_maiores_apenas}")
+    print(f"Quantidade de litros: {quantidade_litros:.2f} e quantidade de latas de 18: {int(latas_maiores_apenas)}")
 else:
     latas_maiores_mistas = quantidade_litros / 18
     decimal_latas_maiores_mistas = latas_maiores_mistas - int(latas_maiores_mistas)
@@ -29,6 +37,6 @@ else:
     latas_menores_mistas = litros_para_dividir_nas_latas_menores / 3.6
     print(f'''
               Quantidade de litros: {quantidade_litros:.2f}
-              Latas de 3.6: {latas_menores_mistas}
-              Latas de 18: {latas_maiores_mistas}
+              Latas de 3.6: {math.ceil(latas_menores_mistas)}
+              Latas de 18: {int(latas_maiores_mistas)}
     ''')
