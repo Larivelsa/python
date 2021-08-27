@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Jogotina</title>
+    <title>Jogatina</title>
 </head>
 
 <body>
@@ -16,18 +16,18 @@
             <thead class="thead-default">
                 <tr>
                     <th>Nome</th>
+                    <th>Categoria</th>
+                    <th>Console</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>God of War</td>
-                </tr>
-                <tr>
-                    <td>Pokemon Silver</td>
-                </tr>
-                <tr>
-                    <td>Super Mario RPG</td>
-                </tr>
+                {% for jogo in jogos %} <!-- aqui estamos usando a notação Jinja para escrever código Python no HTML -->
+                    <tr>
+                        <td>{{jogo.nome}}</td>
+                        <td>{{jogo.categoria}}</td>
+                        <td>{{jogo.console}}</td>
+                    </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
