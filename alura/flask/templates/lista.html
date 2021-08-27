@@ -22,12 +22,13 @@
                 </tr>
             </thead>
             <tbody>
-                {% for jogo in jogos %} <!-- aqui estamos usando a notação Jinja para escrever código Python no HTML -->
-                    <tr>
-                        <td>{{jogo.nome}}</td>
-                        <td>{{jogo.categoria}}</td>
-                        <td>{{jogo.console}}</td>
-                    </tr>
+                {% for jogo in jogos %}
+                <!-- aqui estamos usando a notação Jinja para escrever código Python no HTML -->
+                <tr>
+                    <td>{{jogo.nome}}</td>
+                    <td>{{jogo.categoria}}</td>
+                    <td>{{jogo.console}}</td>
+                </tr>
                 {% endfor %}
             </tbody>
         </table>
