@@ -3,3 +3,4 @@
 #### 12: formatação na saída do print
 #### 13: implementar um tratamento de exceção bem simples
 #### 14: utilizar menos ifs, se possível, tenta englobar o status nos ifs sem a repetição das variáveis de mesmo conteúdo
+#### 18: está confuso o uso do for in rs rs verificar
