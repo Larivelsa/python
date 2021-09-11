@@ -18,14 +18,14 @@ print(mes)
 
 if ano > 0:
     valida_ano = True
-    if 0 < mes <=12:
+    if 0 < mes <= 12:
         valida_mes = True
 
-        for mess in mes_31:
+        if mes in mes_31:
             if dia <= 31:
                 valida_dia = True
 
-        for mess in mes_30:
+        if mes in mes_30:
             if dia <= 30:
                 valida_dia = True
 
@@ -35,5 +35,3 @@ if validade:
     print(f'Data válida! Dia {dia}, mês {mes} e ano {ano}')
 else:
     print(f'Data inválida! Dia {dia}, mês {mes} e ano {ano}')
-
-        
