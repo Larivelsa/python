@@ -7,7 +7,7 @@ conexao = mysql.connector.connect(user='root',
 
 cursor = conexao.cursor()
 
-sql = 'INSERT INTO tabela_a (campo_1, campo_2) VALUES ("melancia",2)'
+sql = 'INSERT INTO tabela_a (campo_1, campo_2) VALUES ("amora",3)'
 
 cursor.execute(sql)
 # Fechamos aqui a conexão do cursor porque não usaremos mais, mas ainda a alteração não foi feita no banco de dados...
