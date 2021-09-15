@@ -6,7 +6,7 @@ conexao = mysql.connector.connect(user='root',
                                   host='localhost',
                                   database='banco_dados')
 
-cursor = conexao_server.cursor()
+cursor = conexao.cursor()
 
 # Passando a sentença em string para uma variável a ser usada no método execute()
 sql = ('CREATE TABLE tabela_a (campo_1 VARCHAR(255), campo_2 INT)')
