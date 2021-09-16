@@ -14,9 +14,6 @@ cursor.execute(sentenca_sql)
 # Retorna uma lista de tuplas ou uma lista vazia.
 resultado = cursor.fetchall()
 
-
-# fechei o cursor aqui porque não precisamos mais usá-lo
-cursor.close() 
 # Acredito que não há uma necessidade grande de ficar fechando cursos já que
 # estamos fechando a conexão logo em seguida. Talvez seja interessante
 # fechar o cursor quando temos mais de um...
@@ -24,8 +21,17 @@ cursor.close()
 for x in resultado:
     print(x)
 
+
+
+# *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*#
+
+
+# O método fetchone() retorna apenas a primeira linha de resultado
+# verificar pq não retorna
+resultado = cursor.fetchone()
+print(resultado)
+
+
+
 # A conexão com o banco de dados deve ser fechada após usar o método fetchall().
 conexao.close()
-
-
-
