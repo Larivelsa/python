@@ -28,18 +28,16 @@ cursor = conexao.cursor()
 
 
 
-conexao.close() # fechar aqui a conexão não influencia em nada o atributos obtido do cursor
+
 
 # Contando quantas linhas foram usadas na sentença SQL
 print(cursor.rowcount, 'registro(s) inserido(s).')
 
 # O cursor é fechado após a contagem das linhas afetadas, senão retornará -1
-cursor.close()
 
-sentenca_sql_ = 'INSERT INTO tabela_a (campo_1, campo_2) VALUES (%s,%s)'
-valores_ = [('coisa', 20),
-           ('geografia', 21)
-]
 
-cursor.executemany(sentenca_sql_, valores_)
+sentenca_sql_ = 'INSERT INTO tabela_b (campo_1) VALUES (%s)'
+valores_ = [('óculos')]
+
+cursor.execute(sentenca_sql_, valores_)
 conexao.commit()
