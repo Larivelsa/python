@@ -14,7 +14,12 @@ cursor = conexao.cursor()
 # a marcação %s de String. Ou seja, testei com %d (para inteiros) e não rolou.
 # Pode ser que eu aprenda algo novo, mas por enquanto vou usando o %s para os
 # parâmetros sequenciais.
-
+sentenca_sql = 'INSERT INTO tabela_a (campo_1, campo_2) VALUES (%s,%s)'
+valores = [('pêssego', 10),
+           ('limão', 11),
+           ('laranja', 12),
+           ('cacau', 13),
+           ('mamão', 14)]
 
 # O método executemany() possibilita que mais de uma linha com dados (apenas dados com linhas multiplas
 # e não setenças em linhas múltiplas) seja inserido ao db.
@@ -26,18 +31,12 @@ cursor = conexao.cursor()
 # usar parâmetros. Ou seja, usa-se comando e valores em uma única linha. E isso alvez não seja tão versátil, bom...
 # Cada caso é um caso.
 
+cursor.executemany(sentenca_sql, valores)
 
-
-
+conexao.commit()
 
 # Contando quantas linhas foram usadas na sentença SQL
 print(cursor.rowcount, 'registro(s) inserido(s).')
 
 # O cursor é fechado após a contagem das linhas afetadas, senão retornará -1
-
-
-sentenca_sql_ = 'INSERT INTO tabela_b (campo_1) VALUES (%s)'
-valores_ = [('óculos')]
-
-cursor.execute(sentenca_sql_, valores_)
-conexao.commit()
+cursor.close()
