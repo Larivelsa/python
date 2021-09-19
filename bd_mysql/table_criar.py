@@ -9,7 +9,7 @@ conexao = mysql.connector.connect(user='root',
 cursor = conexao.cursor()
 
 # Passando a sentença em string para uma variável a ser usada no método execute()
-sql = ('CREATE TABLE tabela_a (campo_1 VARCHAR(255), campo_2 INT)')
+sql = ('CREATE TABLE tabela_b (campo_1 VARCHAR(255), campo_2 INT)')
 
 # Criando a tabela
 cursor.execute(sql)

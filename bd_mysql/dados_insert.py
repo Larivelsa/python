@@ -13,6 +13,7 @@ cursor.execute(sql)
 # Fechamos aqui a conexão do cursor porque não usaremos mais, mas ainda a alteração não foi feita no banco de dados...
 cursor.close()
 
-# Agora sim, com o método commit(), as alterações que mandamos usando o método execute() do cursor 
+# Agora sim, com o método commit(), as alterações que mandamos usando o método execute() do cursor
 # afetarão a base de dados que estamos trabalhando.
 conexao.commit()
+conexao.close()

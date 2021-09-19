@@ -7,14 +7,10 @@ conexao = mysql.connector.connect(user='root',
 
 cursor = conexao.cursor()
 
-# SELECT com WHERE e LIKE
-sentenca_sql = 'SELECT * FROM tabela_a WHERE campo_2 LIKE ("%%s%")'
+sentenca_sql = 'SELECT * FROM tabela_a WHERE campo_2 LIKE ("%%s%") ORDER BY campo_1 DESC'
+valores = [1]
 
-# quanto acontece essa passagem de parâmetro do valor, o método execute() recebe uma lista (segundo parâmetro)
-valor = [1]
-
-cursor.execute(sentenca_sql, valor)
-
+cursor.execute(sentenca_sql, valores)
 resultado = cursor.fetchall()
 
 for x in resultado:
