@@ -20,3 +20,6 @@ USE nome-da-base-de-dados;
 ### Exibir tabelas do banco de dados:
 Após selecionar a base de dados com o comando MySQL: USE <nome-da-base-de-dados>, use o comando:
 SHOW tables;
+
+### Exibir colunas de uma tabela:
+SHOW COLUMNS FROM <nome-da-tabela>;

@@ -14,6 +14,4 @@ cursor.execute(sql_livro)
 sql_autor = ('CREATE TABLE autor (id_autor INT, nome_autor VARCHAR(255))')
 cursor.execute(sql_autor)
 
-# Criando a tabela
-
 cursor.close()
