@@ -21,4 +21,8 @@ conexao_server_e_bd = mysql.connector.connect(user='root',
                                               host='localhost',
                                               database='teste')
 
+# Como a variável conexao recebeu uma instância do objeto,
+# é possível acessar seus atributos (user,pw, host, por exemplo).
+# Estes atributos estão 
+
                                               
