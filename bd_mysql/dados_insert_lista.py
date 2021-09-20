@@ -14,12 +14,18 @@ cursor = conexao.cursor()
 # a marcação %s de String. Ou seja, testei com %d (para inteiros) e não rolou.
 # Pode ser que eu aprenda algo novo, mas por enquanto vou usando o %s para os
 # parâmetros sequenciais.
-sentenca_sql = 'INSERT INTO tabela_a (campo_1, campo_2) VALUES (%s,%s)'
-valores = [('pêssego', 10),
-           ('limão', 11),
-           ('laranja', 12),
-           ('cacau', 13),
-           ('mamão', 14)]
+sentenca_sql = 'INSERT INTO autor (id_autor, nome_autor) VALUES (%s,%s)'
+                
+valores = [(1,'Sócrates Alcântara'),
+           (2,'Platão das Neves'),
+           (3,'Mário Leitão'),
+           (4,'Márcia Tibia'),
+           (5,'Selena de Luminera'),
+           (6,'Plínio Paulo'),
+           (7,'Antônia Albuquerque'),
+           (8,'Bill Jobs'),
+           (9,'Steve Gates'),
+           (10,'Elon Bezos')]
 
 # O método executemany() possibilita que mais de uma linha com dados (apenas dados com linhas multiplas
 # e não setenças em linhas múltiplas) seja inserido ao db.
