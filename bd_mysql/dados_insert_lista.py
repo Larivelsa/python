@@ -15,17 +15,18 @@ cursor = conexao.cursor()
 # Pode ser que eu aprenda algo novo, mas por enquanto vou usando o %s para os
 # parâmetros sequenciais.
 sentenca_sql = 'INSERT INTO livro (id_livro, nome_livro, id_autor) VALUES (%s,%s,%s)'
-                
-valores = [(1,'Sorrindo para vida',10),
-           (2,'Dinheiro na mão', 9),
-           (3,'Como não empobrecer', 8),
-           (4,'Táticas para vencer vendavais',7),
-           (5,'Ping Pong: um viés econômico',6),
-           (6,'Pegue e pague: vida e sociedade', 5),
-           (7,'Em busca do tesouro roubado',4),
-           (8,'Detecte oportunidades e obtenha lucro',None), # para passar valor como null para o MySQL (campo vazio)
-           (9,'Cresça e veja as vestes de Salomão', 1),
-           (10,'Em busca do vale dourado',10)]
+
+valores = [(1, 'Sorrindo para vida', 10),
+           (2, 'Dinheiro na mão', 9),
+           (3, 'Como não empobrecer', 8),
+           (4, 'Táticas para vencer vendavais', 7),
+           (5, 'Ping Pong: um viés econômico', 6),
+           (6, 'Pegue e pague: vida e sociedade', 5),
+           (7, 'Em busca do tesouro roubado', 4),
+           # para passar valor como null para o MySQL (campo vazio)
+           (8, 'Detecte oportunidades e obtenha lucro', None),
+           (9, 'Cresça e veja as vestes de Salomão', 1),
+           (10, 'Em busca do vale dourado', 10)]
 
 # O método executemany() possibilita que mais de uma linha com dados (apenas dados com linhas multiplas
 # e não setenças em linhas múltiplas) seja inserido ao db.
