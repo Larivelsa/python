@@ -6,6 +6,7 @@
 
 3 - criar o ambiente virtual estando no diretório do projeto, usar o comando: 
 > python -m venv <nome_ambiente_virtual>
+
 (a opção -m venv executa o pacote venv da biblioteca padrão como um script independente, passando o nome desejado como argumento)
 
 ! importante ! caso apresente erro "[...] não pode ser carregado porque a execução de scripts foi desabilitada neste sistema.", execute o comando Set-ExecutionPolicy -Scope CurrentUse no PowerShell e defina como parâmetro de ExecutionPolicy que será solicitado logo em seguida como Unrestricted
