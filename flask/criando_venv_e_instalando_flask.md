@@ -1,4 +1,4 @@
-### Tutorial de instalação do ambiente virtual e do Flask no Windows
+## Tutorial de instalação do ambiente virtual e do Flask no Windows
 1 - instalar ambiente virtual (venv) com o comando: 
 > pip install virtualenv
 
