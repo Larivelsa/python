@@ -8,3 +8,6 @@ def conectar():
                                       database='banco_dados')
                                       
     return conexao
+
+# tipos de módulos em python: 
+# https://docs.python.org/pt-br/3/tutorial/modules.html

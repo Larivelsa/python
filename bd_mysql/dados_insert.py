@@ -1,7 +1,6 @@
-import conexao_server_db 
+import conexao_server_db
 
 conexao = conexao_server_db.conectar()
-
 cursor = conexao.cursor()
 
 sql = 'INSERT INTO tabela_a (campo_1, campo_2) VALUES ("amora",3)'
