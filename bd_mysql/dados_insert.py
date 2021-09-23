@@ -1,6 +1,6 @@
-from conexao_server_db import conectar
+import conexao_server_db 
 
-conexao = conectar()
+conexao = conexao_server_db.conectar()
 
 cursor = conexao.cursor()
 
