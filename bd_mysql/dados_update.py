@@ -1,11 +1,6 @@
-import mysql.connector
+from conexao_server_db import conectar
 
-conexao = mysql.connector.connect(
-    host='localhost',
-    user='root',
-    password='root',
-    database='banco_dados'
-)
+conexao = conectar()
 
 cursor = conexao.cursor()
 # Sentença basicamente é assim, alterando o dado da tupla (linha): altere para novo_dado determinado campo de determinada coluna que possua determinado dado

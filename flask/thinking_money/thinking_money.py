@@ -3,7 +3,7 @@ from flask import Flask
 
 # __name__ é o nome do módulo
 # por exemplo, se estiver trabalhando no script atual
-# o __nam__ será main, mas se importamos um script
+# o __name__ será main, mas se importamos um script
 # chamado fibo no script main, o __name__
 # será fibo
 app = Flask(__name__)

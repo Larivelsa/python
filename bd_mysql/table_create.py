@@ -1,10 +1,6 @@
-import mysql.connector
+from conexao_server_db import conectar
 
-# Como vamos trabalhar especificamente com um db, vamos informar aqui no objeto da conexão
-conexao = mysql.connector.connect(user='root',
-                                  password='root',
-                                  host='localhost',
-                                  database='banco_dados')
+conexao = conectar()
 
 cursor = conexao.cursor()
 

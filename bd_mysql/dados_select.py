@@ -1,9 +1,6 @@
-import mysql.connector
+from conexao_server_db import conectar
 
-conexao = mysql.connector.connect(user='root',
-                                  password='root',
-                                  host='localhost',
-                                  database='banco_dados')
+conexao = conectar()
 
 cursor = conexao.cursor()
 sentenca_sql = 'SELECT * FROM tabela_a'

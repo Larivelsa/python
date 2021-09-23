@@ -1,14 +1,12 @@
-import mysql.connector
+from conexao_server import conectar
 
-conexao_server = mysql.connector.connect(user='root',
-                                         password='root',
-                                         host='localhost')
+conexao = conectar()
 
 # A classe cursor possibilita que o Python manipule sentenças SQL.
 # Os cursores são criados pelo método connection.cursor() e isso faz
 # com que os cursores fiquem vinculados à conexão e os comandos
 # são executados no contexto da sessão de db envolvida na conexão.
-cursor = conexao_server.cursor()
+cursor = conexao.cursor()
 
 # Para ficar com o código mais legível, criei uma variável para
 # receber a string com a setença SQL.

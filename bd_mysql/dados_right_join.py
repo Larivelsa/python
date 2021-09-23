@@ -1,11 +1,6 @@
-import mysql.connector
+from conexao_server_db import conectar
 
-conexao = mysql.connector.connect(
-    host='localhost',
-    user='root',
-    password='root',
-    database='banco_dados'
-)
+conexao = conectar()
 
 print(conexao._password)  # - um underscore representa que o atributo é privado
 # um underscore é diferente de dois underscores (name mangling, em que a variável tem uma mudança de fato de nome...

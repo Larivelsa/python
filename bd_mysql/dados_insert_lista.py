@@ -1,10 +1,7 @@
 # Inserindo lista com tuplas de dados usando o método executemany()
-import mysql.connector
+from conexao_server_db import conectar
 
-conexao = mysql.connector.connect(user='root',
-                                  password='root',
-                                  host='localhost',
-                                  database='banco_dados')
+conexao = conectar()
 
 cursor = conexao.cursor()
 
