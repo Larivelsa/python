@@ -6,7 +6,7 @@
 #### O que é WSGI - PEP 3333
 WSGI é um acrônimo para Web Server Gateway Interface, trata-se de uma forma para servidores conversarem com frameworks, 
 e vice-versa (fonte: http://devfuria.com.br/linux/instalando-apache-wsgi/). Os WSGI são apenas para Python (pelo menos até agora).
-Outras linguagem de back-end usam outros gateway. Por exemplo, o PHP usa o FastCGI e o Perl usa o CGI para essa comunicação
+Outras linguagens de back-end usam outros gateway. Por exemplo, o PHP usa o FastCGI e o Perl usa o CGI para essa comunicação
 com os servidores web.
 O WSGI tem o objetivo de ser um interface simples e universal entre o web server API/frameworks web. 
 Para que o WSGI funcione é necessário que os frameworks implementem isso. 
