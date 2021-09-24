@@ -28,11 +28,11 @@ Numa aplicação web usando o WSGI tem-se os seguintes componentes:
 
 Basicamente, a comunicação acontece deste modo:
 
-cliente <---> web server <---> wsgi <---> python (é possível utilizar o wsgi sem frameworks)
+##### cliente <---> web server <---> wsgi <---> python (é possível utilizar o wsgi sem frameworks)
 
 ou
 
-cliente <---> web server <---> wsgi <---> framework web python (flask, django, etc)
+##### cliente <---> web server <---> wsgi <---> framework web python (flask, django, etc)
 
 
 Servidores WSGI mais usados em Flask/Django:
