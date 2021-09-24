@@ -17,9 +17,13 @@ Numa aplicação web usando o WSGI tem-se os seguintes componentes:
 - web browser
 
 1º o browser faz a requisição para o servidor web via HTTP
+
 2º o servidor web passa essa requisição para o servidor WSGI
+
 3º o servidor WSGI obtém a requisição e a envia para processamento na linguagem Python
+
 4º o servidor WSGI devolve a resposta para o servidor web
+
 5º finalmente, o servidor web envia a resposta ao cliente (browser)
 
 Basicamente, a comunicação acontece deste modo:
