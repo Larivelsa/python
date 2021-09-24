@@ -27,8 +27,11 @@ Numa aplicação web usando o WSGI tem-se os seguintes componentes:
 5º finalmente, o servidor web envia a resposta ao cliente (browser)
 
 Basicamente, a comunicação acontece deste modo:
+
 cliente <---> web server <---> wsgi <---> python (é possível utilizar o wsgi sem frameworks)
+
 ou
+
 cliente <---> web server <---> wsgi <---> framework web python (flask, django, etc)
 
 
