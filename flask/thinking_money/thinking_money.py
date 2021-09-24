@@ -20,4 +20,6 @@ def ola():
 
 # usa-se degub=True como parâmetro nomeado para que seja possível a visualização do log de
 # acesso às páginas e também possibilitar o seu reinício em caso de alteração no código-fonte
+# é usado apenas em ambiente de desenvolvimento, para produção usa-se a o deploy do WSGI
+# e que não faz parte do objeto instanciado da classe
 app.run(debug=True)
