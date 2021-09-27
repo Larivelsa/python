@@ -5,12 +5,18 @@ from flask import Flask, render_template, url_for, request
 app = Flask(__name__)
 
 
-class Receita:
-    def __init__(self, nome, tipo, data, valor):
+class EventoFinanceiro:
+    def __init__(self, nome, valor, data):
         self.nome = nome
-        self.tipo = tipo
-        self.data = data
         self.valor = valor
+        self.data = data
+
+class Receita(EventoFinanceiro):
+    def __init__(self):
+        pass
+
+
+
 
 
 # cria uma rota para server/inicio
@@ -28,33 +34,9 @@ def ola():
     return f'<h2>Olá thinker money!</h2>'
 
 
-@app.route('/receita')
-def nova():
-    return render_template('receita.html')
-
-
-@app.route('/receita_criar', methods=['POST', ])
-def receita_criar():
-    nome = request.form['nome']
-    tipo = request.form['tipo']
-    data = request.form['data']
-    valor = request.form['valor']
-
-    receita = Receita(nome, tipo, data, valor)
-    lista = lista.append(receita)
-
-    return lista
-
-
-@app.route('/e')
-def e():
-    return receita_criar().lista
-
 
 # usa-se degub=True como parâmetro nomeado para que seja possível a visualização do log de
 # acesso às páginas e também possibilitar o seu reinício em caso de alteração no código-fonte
 # é usado apenas em ambiente de desenvolvimento, para produção usa-se a o deploy do WSGI
 # e que não faz parte do objeto instanciado da classe
 app.run(debug=True)
-
-# próximo passo: ver templates
