@@ -6,21 +6,25 @@ app = Flask(__name__)
 
 
 class EventoFinanceiro:
-    def __init__(self, nome, valor, data):
+    def __init__(self, nome, tipo, valor, data):
         self.nome = nome
+        self.tipo = tipo
         self.valor = valor
         self.data = data
 
+
 class Receita(EventoFinanceiro):
-    def __init__(self):
-        pass
+    def __init__(self, nome, tipo, valor, data):
+        super().__init__(nome, tipo, valor, data)
 
 
-
+class Despesa(EventoFinanceiro):
+    def __init__(self, nome, tipo, valor, data):
+        super().__init__(nome, tipo, valor, data)
 
 
 # cria uma rota para server/inicio
-# é necessário que haja uma função abaixo para gerar
+# é necessário que haja uma função abaixo  para gerar
 # o conteúdo da página
 
 # @app.route faz parte do Flask diz qual URL deve ser acionar a função
@@ -34,9 +38,8 @@ def ola():
     return f'<h2>Olá thinker money!</h2>'
 
 
-
-# usa-se degub=True como parâmetro nomeado para que seja possível a visualização do log de
-# acesso às páginas e também possibilitar o seu reinício em caso de alteração no código-fonte
-# é usado apenas em ambiente de desenvolvimento, para produção usa-se a o deploy do WSGI
-# e que não faz parte do objeto instanciado da classe
+    # usa-se degub=True como parâmetro nomeado para que seja possível a visualização do log de
+    # acesso às páginas e também possibilitar o seu reinício em caso de alteração no código-fonte
+    # é usado apenas em ambiente de desenvolvimento, para produção usa-se a o deploy do WSGI
+    # e que não faz parte do objeto instanciado da classe
 app.run(debug=True)
