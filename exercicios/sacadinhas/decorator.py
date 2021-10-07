@@ -12,7 +12,7 @@ def f2(f):
 
 f2(f1)
 
-# wrapper
+# wrapper e decorator
 
 def f1(func):
     def wrapper():
@@ -22,8 +22,13 @@ def f1(func):
 
     return wrapper
 
+@f1 
+# @f1 é o mesmo que se fizermos x = f1(f)
 def f():
     print("Hello")
 
-x = f1(f)
-x()
+f()
+
+# por questões de receber parâmetros diversos, ver conceitos de *args, **kwargs
+
+
