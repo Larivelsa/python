@@ -1,0 +1,18 @@
+<table>
+    <thead>
+        <tr>
+            <th>
+                Título
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for livro in livros %}
+        <tr>
+            <td>
+                {{ livro }}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
