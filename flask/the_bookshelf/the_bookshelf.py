@@ -10,7 +10,7 @@ def barras():
     return render_template('inicial.html')
 
 
-@app.route('/list')
+@app.route('/lista')
 def listar():
     lista = ('O Cavaleiro Preso na Armadura',
              'A Riqueza de uma Vida Simples', 'Os Segredos da Mente Milionária')
