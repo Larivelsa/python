@@ -5,6 +5,14 @@ app = Flask(__name__)
 # http://devfuria.com.br/python/entenda-__name__-__main__/
 
 
+class Livro:
+    def __init__(titulo, autor, genero, sinopse):
+        self.titulo = titulo
+        self.autor = autor
+        self.genero = genero
+        self.sinopse = sinopse
+
+
 @app.route('/inicial')
 def barras():
     return render_template('inicial.html')
