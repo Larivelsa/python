@@ -6,23 +6,23 @@ app = Flask(__name__)
 
 
 class Livro:
-    def __init__(titulo, autor, genero, sinopse):
+    def __init__(self,titulo, autor, genero, sinopse):
         self.titulo = titulo
         self.autor = autor
         self.genero = genero
         self.sinopse = sinopse
 
+lista = []
 
 @app.route('/inicial')
 def barras():
     return render_template('inicial.html')
 
 
-@app.route('/lista')
-def listar():
-    lista = ('O Cavaleiro Preso na Armadura',
-             'A Riqueza de uma Vida Simples', 'Os Segredos da Mente Milionária')
+@app.route('/cria')
+def criar():
+    l2 = Livro('Os Segredos da Mente Milionária','T. Harv Eker','Finanças','Muito bom')
+    lista.append(l2)
     return render_template('lista.html', livros=lista)
-
 
 app.run(debug=True)

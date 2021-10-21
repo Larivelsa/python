@@ -1,17 +1,19 @@
 <table>
     <thead>
         <tr>
-            <th>
-                Título
-            </th>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Gênero</th>
+            <th>Sinopse</th>
         </tr>
     </thead>
     <tbody>
         {% for livro in livros %}
         <tr>
-            <td>
-                {{ livro }}
-            </td>
+            <td>{{ livro.titulo }}</td>
+            <td>{{ livro.autor }}</td>
+            <td>{{ livro.genero }}</td>
+            <td>{{ livro.sinopse }}</td>
         </tr>
         {% endfor %}
     </tbody>
