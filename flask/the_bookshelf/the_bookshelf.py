@@ -4,7 +4,6 @@ app = Flask(__name__)
 # http://devfuria.com.br/python/modulos-pacotes/
 # http://devfuria.com.br/python/entenda-__name__-__main__/
 
-
 class Livro:
     def __init__(self,titulo, autor, genero, sinopse):
         self.titulo = titulo
@@ -18,11 +17,10 @@ lista = []
 def barras():
     return render_template('inicial.html')
 
-
 @app.route('/cria')
 def criar():
-    l2 = Livro('Os Segredos da Mente Milionária','T. Harv Eker','Finanças','Muito bom')
-    lista.append(l2)
+    l1 = Livro('Os Segredos da Mente Milionária','T. Harv Eker','Finanças','Possuir mindset de riqueza é essencial.')
+    lista.append(l1)
     return render_template('lista.html', livros=lista)
 
-app.run(debug=True)
+app.run(debug=True) 
