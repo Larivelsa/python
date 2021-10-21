@@ -17,10 +17,18 @@ lista = []
 def barras():
     return render_template('inicial.html')
 
-@app.route('/cria')
-def criar():
+@app.route('/novo')
+def novo():
+    return render_template('novo.html')
+
+@app.route('/inserir')
+def inserir():
     l1 = Livro('Os Segredos da Mente Milionária','T. Harv Eker','Finanças','Possuir mindset de riqueza é essencial.')
     lista.append(l1)
-    return render_template('lista.html', livros=lista)
+    return render_template('listar.html', livros=lista)
+
+@app.route('/listar')
+def listar():
+    return render_template('listar.html',livros=lista)
 
 app.run(debug=True) 
