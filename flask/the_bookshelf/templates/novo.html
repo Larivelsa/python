@@ -1,5 +1,6 @@
-<link rel="stylesheet" href="../static/bootstrap.css">
+{% extends "template.html" %}
 
+{% block conteudo %}
 <div class="container-fluid">
   <form action="{{ url_for('inserir') }}" method="POST">
     <div class="mb-3">
@@ -22,6 +23,10 @@
       <label for="sinopse" class="form-label">Sinopse</label>
       <textarea name="sinopse" class="form-control" id="sinopse" rows="3"></textarea>
     </div>
+    <div class="mb-3">
+      <label for="sinopse" class="form-label">Data de connclusão de leitura</label>
+      <input type="date" name="data" class="form-control" id="data">
+    </div>
     <button type="submit" class="btn btn-primary">Enviar</button>
     <div class="alert alert-success mt-3" role="alert">
       {{ mensagem }} Continue o cadastro ou <a href="/listar" class="alert-link">veja a listagem e livros já
@@ -30,3 +35,4 @@
 
   </form>
 </div>
+{% endblock %}

@@ -1,6 +1,6 @@
-<link rel="stylesheet" href="../static/bootstrap.css">
+{% extends "template.html" %}
 
-<p class="h5 text-center">Lista de Livros</p>
+{% block conteudo %}
 <table class="table table-striped">
     <thead>
         <tr>
@@ -8,6 +8,7 @@
             <th>Autor</th>
             <th>Gênero</th>
             <th>Sinopse</th>
+            <th>Data de conclusão</th>
         </tr>
     </thead>
     <tbody>
@@ -17,7 +18,9 @@
             <td>{{ livro.autor }}</td>
             <td>{{ livro.genero }}</td>
             <td>{{ livro.sinopse }}</td>
+            <td>{{ livro.data }}</td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
+{% endblock %}

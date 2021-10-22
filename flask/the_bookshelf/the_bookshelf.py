@@ -6,11 +6,12 @@ app = Flask(__name__)
 
 
 class Livro:
-    def __init__(self, titulo, autor, genero, sinopse):
+    def __init__(self, titulo, autor, genero, sinopse, dataa):
         self.titulo = titulo
         self.autor = autor
         self.genero = genero
         self.sinopse = sinopse
+        self.data = dataa
 
 
 lista = []
@@ -23,7 +24,7 @@ def barras():
 
 @app.route('/novo')
 def novo():
-    return render_template('novo.html')
+    return render_template('novo.html',titulo='Cadastro de livro')
 
 
 @app.route('/inserir', methods=['POST', ])
@@ -32,7 +33,8 @@ def inserir():
     autor = request.form['autor']
     genero = request.form['genero']
     sinopse = request.form['sinopse']
-    livro = Livro(titulo, autor, genero, sinopse)
+    data = request.form['data']
+    livro = Livro(titulo, autor, genero, sinopse, data)
     lista.append(livro)
 
     if lista:
@@ -40,12 +42,11 @@ def inserir():
     else:
         mensagem = 'O livro não foi inserido.'
 
-    return render_template('novo.html', mensagem=mensagem)
-
+    return render_template('novo.html', mensagem=mensagem, titulo='Cadastro de leitura')
 
 @app.route('/listar')
 def listar():
-    return render_template('listar.html', livros=lista)
+    return render_template('listar.html', livros=lista, titulo='Lista de leituras')
 
 
 app.run(debug=True)

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"> <!--charset indica o formato de caracteres do documento HTML-->
+        <meta name="viewport" content="width=device-width, initial-scale=1"> <!--viewport indica que o conteúdo deverá se adequar 
+            ao formato da tela do dispositivo, scale=1 é relacionado ao zoom, sendo que 1px de tela nesta especificação corresponde 
+            a 1px do CSS-->
+        <link rel="stylesheet" href="../static/bootstrap.css">
+        <link rel="stylesheet" href="../static/header.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container-md mt-3">
+            <h1 class="mb-3 text-center titulos">{{ titulo }}</h1>
+            {% block conteudo %}{% endblock %}
+        </div>
+    </body>
+</html>
