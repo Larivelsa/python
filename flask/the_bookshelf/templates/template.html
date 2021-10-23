@@ -1,20 +1,56 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8"> <!--charset indica o formato de caracteres do documento HTML-->
-        <meta name="viewport" content="width=device-width, initial-scale=1"> <!--viewport indica que o conteúdo deverá se adequar 
+
+<head>
+    <meta charset="UTF-8">
+    <!--charset indica o formato de caracteres do documento HTML-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--viewport indica que o conteúdo deverá se adequar 
             ao formato da tela do dispositivo, scale=1 é relacionado ao zoom, sendo que 1px de tela nesta especificação corresponde 
             a 1px do CSS-->
-        <link rel="stylesheet" href="../static/bootstrap.css">
-        <link rel="stylesheet" href="../static/header.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <div class="container-md mt-3">
-            <h1 class="mb-3 text-center titulos">{{ titulo }}</h1>
-            {% block conteudo %}{% endblock %}
+    <link rel="stylesheet" href="../static/bootstrap.css">
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">O que gostaria de fazer?</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarText">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="inicio">Início</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="novo">Nova</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="listar">Listar</a>
+                            </li>
+                        </ul>
+                        <span class="navbar-text">
+                            <em>"Em ciência leia sempre os livros mais novos. Em literatura, os mais velhos" </em>-
+                            Millôr
+                            Fernandes
+                        </span>
+                    </div>
+                </div>
+            </nav>
         </div>
-    </body>
+    </header>
+    <div class="container-md mt-3">
+        <h1 class="mb-3 text-center fonte-especial">{{ titulo }}</h1>
+        {% block conteudo %}{% endblock %}
+    </div>
+</body>
+
 </html>
