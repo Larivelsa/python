@@ -15,7 +15,41 @@ class Livro:
         self.data = data
 
 
+class Usuario:
+    def __init__(self, id, nome, senha):
+        self.id = id
+        self.nome = nome
+        self.senha = senha
+
+
+usuario1 = Usuario('larissa91', 'Larissa', '1234')
+usuario2 = Usuario('mateus96', 'Mateus', 'tibia')
+usuario3 = Usuario('klaus21', 'Klaus', 'lulu')
+
+usuarios = {usuario1.id: usuario1,
+            usuario2.id: usuario2,
+            usuario3.id: usuario3}
+
 lista = []
+
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+
+@app.route('/autenticar')
+def autenticar():
+    if request.form['usuario'] in usuarios:
+        usuario = usuarios[request.form['usuario']]
+        if usuario.senha == request.form['senha']:
+            session['usuario_logado'] = usuario.id
+            flash(usuario.nome + ' logou com sucesso!')
+            proxima_pagina = request.form['proxima']
+            return redirect(proxima_pagina)
+    else:
+        flash('Não logado, tente novamente!')
+        return redirect(url_for('login'))
 
 
 @app.route('/inicio')

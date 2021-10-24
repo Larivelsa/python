@@ -1,3 +1,11 @@
 .fonte-especial {
     font-family: 'Sacramento', cursive;
 }
+.logo {
+    font-family: 'Sacramento', cursive;
+    text-shadow: 2px 2px 20px #000000;
+}
+
+.slogan{
+    text-shadow: 2px 2px 20px #000000;
+}
