@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, session, flash
 
 app = Flask(__name__)
 # http://devfuria.com.br/python/modulos-pacotes/
 # http://devfuria.com.br/python/entenda-__name__-__main__/
+app.secret_key = 'livros'
 
 
 class Livro:
@@ -33,23 +34,30 @@ usuarios = {usuario1.id: usuario1,
 lista = []
 
 
+@app.route('/')
+def pagina_inicial():
+    return redirect('/inicio')
+
+
 @app.route('/login')
 def login():
     return render_template('login.html')
 
 
-@app.route('/autenticar')
+@app.route('/autenticar', methods=['POST', ])
 def autenticar():
     if request.form['usuario'] in usuarios:
         usuario = usuarios[request.form['usuario']]
-        if usuario.senha == request.form['senha']:
-            session['usuario_logado'] = usuario.id
-            flash(usuario.nome + ' logou com sucesso!')
-            proxima_pagina = request.form['proxima']
-            return redirect(proxima_pagina)
+        if request.form['senha'] == usuario.senha:
+            session['usuario_logado'] = request.form['usuario']
+            flash('Sucesso no login!')
+            return redirect('/novo')
+        else:
+            flash('Senha ou usuário incorreto! Tente novamente.')
+            return redirect('/login')
     else:
-        flash('Não logado, tente novamente!')
-        return redirect(url_for('login'))
+        flash('Senha ou usuário incorreto! Tente novamente.')
+        return redirect('/login')
 
 
 @app.route('/inicio')

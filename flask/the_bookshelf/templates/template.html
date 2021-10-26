@@ -48,6 +48,15 @@
         </div>
     </header>
     <div class="container-md mt-3">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul id="messages" class="list-unstyled">
+            {% for message in messages %}
+            <li class="alert alert-info">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
         <h1 class="mb-3 text-center fonte-especial">{{ titulo }}</h1>
         {% block conteudo %}{% endblock %}
     </div>
