@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session, flash
+from flask import Flask, render_template, request, redirect, session, flash, url_for
 
 app = Flask(__name__)
 # http://devfuria.com.br/python/modulos-pacotes/
@@ -36,7 +36,7 @@ lista = []
 
 @app.route('/')
 def pagina_inicial():
-    return redirect('/inicio')
+    return redirect(url_for('inicio'))
 
 
 @app.route('/login')
@@ -45,7 +45,7 @@ def login():
     return render_template('login.html', proxima=proxima)
 
 
-@app.route('/autenticar', methods=['POST', 'GET', ])
+@app.route('/autenticar', methods=['POST', ])
 def autenticar():
     if request.form['usuario'] in usuarios:
         usuario = usuarios[request.form['usuario']]
@@ -53,31 +53,31 @@ def autenticar():
             session['usuario_logado'] = usuario.nome
             flash(f'Sucesso no login! Bem-vindx, {session["usuario_logado"]}')
             proxima_pagina = request.form['proxima']
-            return redirect(f'/{proxima_pagina}')
+            return redirect(proxima_pagina)
         else:
             flash('Senha ou usuário incorreto! Tente novamente.')
-            return redirect('/login')
+            return redirect(url_for('login'))
     else:
         flash('Senha ou usuário incorreto! Tente novamente.')
-        return redirect('/login')
+        return redirect(url_for('login'))
 
 
 @app.route('/logout')
-def deslogar():
+def logout():
     session['usuario_logado'] = None
     flash('Nenhum usuário logado.')
-    return redirect('/inicio')
+    return redirect(url_for('inicio'))
 
 
 @app.route('/inicio')
-def barras():
+def inicio():
     return render_template('inicial.html')
 
 
 @app.route('/novo')
 def novo():
     if 'usuario_logado' not in session or session['usuario_logado'] == None:
-        return redirect('/login?proxima=novo')
+        return redirect(url_for('login', proxima=url_for('novo')))
     return render_template('novo.html', titulo='Cadastro de livro')
 
 
@@ -102,7 +102,7 @@ def inserir():
 @app.route('/listar')
 def listar():
     if 'usuario_logado' not in session or session['usuario_logado'] == None:
-        return redirect('/login?proxima=listar')
+        return redirect(url_for('login', proxima=url_for('listar')))
     return render_template('listar.html', livros=lista, titulo='Lista de leituras')
 
 
