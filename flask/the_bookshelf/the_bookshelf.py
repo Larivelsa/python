@@ -41,23 +41,32 @@ def pagina_inicial():
 
 @app.route('/login')
 def login():
-    return render_template('login.html')
+    proxima = request.args.get('proxima')
+    return render_template('login.html', proxima=proxima)
 
 
-@app.route('/autenticar', methods=['POST', ])
+@app.route('/autenticar', methods=['POST', 'GET', ])
 def autenticar():
     if request.form['usuario'] in usuarios:
         usuario = usuarios[request.form['usuario']]
         if request.form['senha'] == usuario.senha:
             session['usuario_logado'] = request.form['usuario']
             flash('Sucesso no login!')
-            return redirect('/novo')
+            proxima_pagina = request.form['proxima']
+            return redirect(f'/{proxima_pagina}')
         else:
             flash('Senha ou usuário incorreto! Tente novamente.')
             return redirect('/login')
     else:
         flash('Senha ou usuário incorreto! Tente novamente.')
         return redirect('/login')
+
+
+@app.route('/logout')
+def deslogar():
+    session['usuario_logado'] = None
+    flash('Nenhum usuário logado.')
+    return redirect('/inicio')
 
 
 @app.route('/inicio')
@@ -67,6 +76,8 @@ def barras():
 
 @app.route('/novo')
 def novo():
+    if 'usuario_logado' not in session or session['usuario_logado'] == None:
+        return redirect('/login?proxima=novo')
     return render_template('novo.html', titulo='Cadastro de livro')
 
 
@@ -82,15 +93,16 @@ def inserir():
     lista.append(livro)
 
     if lista:
-        mensagem = 'Livro inserido com sucesso!'
+        flash('Leitura inserida com sucesso!')
     else:
-        mensagem = 'O livro não foi inserido.'
-
-    return render_template('novo.html', mensagem=mensagem, titulo='Cadastro de leitura')
+        flash('Leitura não foi inserida.')
+    return render_template('novo.html', titulo='Cadastro de leitura')
 
 
 @app.route('/listar')
 def listar():
+    if 'usuario_logado' not in session or session['usuario_logado'] == None:
+        return redirect('/login?proxima=listar')
     return render_template('listar.html', livros=lista, titulo='Lista de leituras')
 
 

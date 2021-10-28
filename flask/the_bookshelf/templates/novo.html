@@ -15,8 +15,8 @@
     <label for="genero" class="form-label">Gênero</label>
     <select name="genero" class="form-select" aria-label="genero">
       <option selected>Selecione</option>
-      <option value="finanças">Finanças</option>
-      <option value="tecnologia da informação">Tecnologia da Informação</option>
+      <option value="Finanças">Finanças</option>
+      <option value="Tecnologia da Informação">Tecnologia da Informação</option>
     </select>
   </div>
   <div class="mb-3">
@@ -39,11 +39,6 @@
     <input type="date" name="data" class="form-control" id="data">
   </div>
   <button type="submit" class="btn btn-primary">Enviar</button>
-  <div class="alert alert-light mt-3" role="alert">
-    {{ mensagem }} Continue o cadastro ou <a href="/listar" class="alert-link">veja a listagem e livros já
-      cadastrados</a>.
-  </div>
-
 </form>
 
 {% endblock %}
