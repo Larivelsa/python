@@ -1,4 +1,7 @@
 from flask import Flask, render_template, request, redirect, session, flash, url_for
+from flask_mysqldb import MySQL
+from models import Leitura, Usuario
+from dao import LeituraDao, UsuarioDao
 
 app = Flask(__name__)
 # http://devfuria.com.br/python/modulos-pacotes/
@@ -6,32 +9,14 @@ app = Flask(__name__)
 app.secret_key = 'livros'
 
 
-class Livro:
-    def __init__(self, titulo, autor, genero, sinopse, nota, data):
-        self.titulo = titulo
-        self.autor = autor
-        self.genero = genero
-        self.sinopse = sinopse
-        self.nota = nota
-        self.data = data
-
-
-class Usuario:
-    def __init__(self, id, nome, senha):
-        self.id = id
-        self.nome = nome
-        self.senha = senha
-
-
-usuario1 = Usuario('larissa91', 'Larissa', '1234')
-usuario2 = Usuario('mateus96', 'Mateus', 'tibia')
-usuario3 = Usuario('klaus21', 'Klaus', 'lulu')
-
-usuarios = {usuario1.id: usuario1,
-            usuario2.id: usuario2,
-            usuario3.id: usuario3}
-
-lista = []
+app.config['MYSQL_HOST'] = "127.0.0.1"
+app.config['MYSQL_USER'] = "root"
+app.config['MYSQL_PASSWORD'] = "root"
+app.config['MYSQL_DB'] = "the_bookshelf"
+app.config['MYSQL_PORT'] = 3306
+db = MySQL(app)
+leitura_dao = LeituraDao(db)
+usuario_dao = UsuarioDao(db)
 
 
 @app.route('/')
@@ -47,11 +32,11 @@ def login():
 
 @app.route('/autenticar', methods=['POST', ])
 def autenticar():
-    if request.form['usuario'] in usuarios:
-        usuario = usuarios[request.form['usuario']]
+    usuario = usuario_dao.buscar_por_id(request.form['usuario'])
+    if usuario:
         if request.form['senha'] == usuario.senha:
             session['usuario_logado'] = usuario.nome
-            flash(f'Sucesso no login! Bem-vindx, {session["usuario_logado"]}')
+            flash(f'Sucesso no login! Olá, {session["usuario_logado"]}')
             proxima_pagina = request.form['proxima']
             return redirect(proxima_pagina)
         else:
@@ -83,16 +68,20 @@ def novo():
 
 @app.route('/inserir', methods=['POST', ])
 def inserir():
+    data = request.form['data']
+    tipo = request.form['tipo']
+    formato = request.form['formato']
     titulo = request.form['titulo']
     autor = request.form['autor']
     genero = request.form['genero']
     sinopse = request.form['sinopse']
-    nota = request.form['nota']
-    data = request.form['data']
-    livro = Livro(titulo, autor, genero, sinopse, nota, data)
-    lista.append(livro)
+    classificacao = request.form['classificacao']
 
-    if lista:
+    leitura = Leitura(data, tipo, formato, titulo, autor,
+                      genero, sinopse, classificacao)
+    leitura_inserida = leitura_dao.salvar(leitura)
+
+    if leitura_inserida:
         flash('Leitura inserida com sucesso!')
     else:
         flash('Leitura não foi inserida.')
@@ -101,9 +90,8 @@ def inserir():
 
 @app.route('/listar')
 def listar():
-    if 'usuario_logado' not in session or session['usuario_logado'] == None:
-        return redirect(url_for('login', proxima=url_for('listar')))
-    return render_template('listar.html', livros=lista, titulo='Lista de leituras')
+    lista = leitura_dao.listar()
+    return render_template('listar.html', leituras=lista, titulo='Lista de leituras')
 
 
 app.run(debug=True)

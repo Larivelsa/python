@@ -8,19 +8,19 @@
             <th>Autor</th>
             <th>Gênero</th>
             <th>Sinopse</th>
-            <th>Nota</th>
+            <th>Classificação</th>
             <th>Data de conclusão</th>
         </tr>
     </thead>
     <tbody>
-        {% for livro in livros %}
+        {% for leitura in leituras %}
         <tr>
-            <td>{{ livro.titulo }}</td>
-            <td>{{ livro.autor }}</td>
-            <td>{{ livro.genero }}</td>
-            <td>{{ livro.sinopse }}</td>
-            <td>{{ livro.nota }}</td>
-            <td>{{ livro.data }}</td>
+            <td>{{ leitura.titulo }}</td>
+            <td>{{ leitura.autor }}</td>
+            <td>{{ leitura.genero }}</td>
+            <td>{{ leitura.sinopse }}</td>
+            <td>{{ leitura.classificacao }}</td>
+            <td>{{ leitura.data }}</td>
         </tr>
         {% endfor %}
     </tbody>
