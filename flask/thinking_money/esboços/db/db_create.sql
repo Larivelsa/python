@@ -1,1 +1,0 @@
-CREATE DATABASE thinking_money;
