@@ -10,6 +10,8 @@
             <th>Sinopse</th>
             <th>Classificação</th>
             <th>Data de conclusão</th>
+            <th>ID</th>
+            <th>Editar</th>
         </tr>
     </thead>
     <tbody>
@@ -21,6 +23,8 @@
             <td>{{ leitura.sinopse }}</td>
             <td>{{ leitura.classificacao }}</td>
             <td>{{ leitura.data }}</td>
+            <td>{{ leitura.id }}</td>
+            <td><a href="{{ url_for('editar', id = leitura.id)}}">Editar</a></td>
         </tr>
         {% endfor %}
     </tbody>

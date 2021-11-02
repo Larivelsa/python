@@ -2,9 +2,9 @@
 from models import Leitura, Usuario
 
 SQL_DELETA_LEITURA = 'DELETE FROM leitura WHERE id = %s'
-SQL_LEITURA_POR_ID = 'SELECT id, data, tipo, formato, titulo, autor, genero, sinopse, classificacao WHERE id = %s'
-SQL_USUARIO_POR_ID = 'SELECT id, nome, senha from user WHERE id = %s'
-SQL_ATUALIZA_JOGO = 'UPDATE leitura SET data=%s, tipo=%s, formato=%s, titulo=%s, autor=%s, genero=%s, sinopse=%s, classificacao=%s WHERE id = %s'
+SQL_LEITURA_POR_ID = 'SELECT id, data, tipo, formato, titulo, autor, genero, sinopse, classificacao FROM leitura WHERE id = %s'
+SQL_USUARIO_POR_ID = 'SELECT id, nome, senha FROM user WHERE id = %s'
+SQL_ATUALIZA_LEITURA = 'UPDATE leitura SET data=%s, tipo=%s, formato=%s, titulo=%s, autor=%s, genero=%s, sinopse=%s, classificacao=%s WHERE id = %s'
 SQL_BUSCA_LEITURAS = 'SELECT id, data, tipo, formato, titulo, autor, genero, sinopse, classificacao FROM leitura'
 SQL_CRIA_LEITURA = 'INSERT into leitura (data, tipo, formato, titulo, autor, genero, sinopse, classificacao) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)'
 
@@ -18,7 +18,7 @@ class LeituraDao:
 
         if (leitura.id):
             cursor.execute(SQL_ATUALIZA_LEITURA, (leitura.data, leitura.tipo, leitura.formato,
-                           leitura.titulo, leitura.autor, leitura.genero, leitura.sinopse, leitura.classificacao))
+                           leitura.titulo, leitura.autor, leitura.genero, leitura.sinopse, leitura.classificacao, leitura.id))
         else:
             cursor.execute(SQL_CRIA_LEITURA, (leitura.data, leitura.tipo, leitura.formato,
                            leitura.titulo, leitura.autor, leitura.genero, leitura.sinopse, leitura.classificacao))
@@ -36,7 +36,7 @@ class LeituraDao:
         cursor = self.__db.connection.cursor()
         cursor.execute(SQL_LEITURA_POR_ID, (id,))
         tupla = cursor.fetchone()
-        return Leitura(tupla[1], tupla[2], tupla[3], tupla[4], tupla[5], tupla[6], tupla[7], tupla[8])
+        return Leitura(tupla[1], tupla[2], tupla[3], tupla[4], tupla[5], tupla[6], tupla[7], tupla[8], id=tupla[0])
 
     def deletar(self, id):
         self.__db.connection.cursor().execute(SQL_DELETA_LEITURA, (id, ))
@@ -57,7 +57,7 @@ class UsuarioDao:
 
 def traduz_leituras(leituras):
     def cria_leitura_com_tupla(tupla):
-        return Leitura(tupla[1], tupla[2], tupla[3], tupla[4], tupla[5], tupla[6], tupla[7], tupla[8])
+        return Leitura(tupla[1], tupla[2], tupla[3], tupla[4], tupla[5], tupla[6], tupla[7], tupla[8], id=tupla[0])
     return list(map(cria_leitura_com_tupla, leituras))
 
 

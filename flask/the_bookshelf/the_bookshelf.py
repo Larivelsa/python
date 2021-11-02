@@ -63,7 +63,7 @@ def inicio():
 def novo():
     if 'usuario_logado' not in session or session['usuario_logado'] == None:
         return redirect(url_for('login', proxima=url_for('novo')))
-    return render_template('novo.html', titulo='Cadastro de livro')
+    return render_template('novo.html', titulo='Cadastro de leitura')
 
 
 @app.route('/inserir', methods=['POST', ])
@@ -90,6 +90,38 @@ def inserir():
 
 @app.route('/listar')
 def listar():
+    lista = leitura_dao.listar()
+    return render_template('listar.html', leituras=lista, titulo='Lista de leituras')
+
+
+@app.route('/editar/<int:id>')
+def editar(id):
+    if 'usuario_logado' not in session or session['usuario_logado'] == None:
+        return redirect(url_for('login', proxima=url_for('editar')))
+    leitura = leitura_dao.busca_por_id(id)
+    return render_template('editar.html', titulo='Editando leitura', leitura=leitura)
+
+
+@app.route('/atualizar', methods=['POST', ])
+def atualizar():
+    id = request.form['id']
+    data = request.form['data']
+    tipo = request.form['tipo']
+    formato = request.form['formato']
+    titulo = request.form['titulo']
+    autor = request.form['autor']
+    genero = request.form['genero']
+    sinopse = request.form['sinopse']
+    classificacao = request.form['classificacao']
+
+    leitura = Leitura(data, tipo, formato, titulo, autor,
+                      genero, sinopse, classificacao, id)
+    leitura_inserida = leitura_dao.salvar(leitura)
+
+    if leitura_inserida:
+        flash('Leitura atualizada com sucesso!')
+    else:
+        flash('Leitura não foi atualizada.')
     lista = leitura_dao.listar()
     return render_template('listar.html', leituras=lista, titulo='Lista de leituras')
 
