@@ -24,7 +24,10 @@
             <td>{{ leitura.classificacao }}</td>
             <td>{{ leitura.data }}</td>
             <td>{{ leitura.id }}</td>
-            <td><a href="{{ url_for('editar', id = leitura.id)}}">Editar</a></td>
+            <td>
+                <a href="{{ url_for('editar', id = leitura.id)}}">Editar</a>
+                <a href="{{ url_for('excluir', id = leitura.id)}}">Excluir</a>
+            </td>
         </tr>
         {% endfor %}
     </tbody>

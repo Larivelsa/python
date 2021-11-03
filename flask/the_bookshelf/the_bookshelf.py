@@ -126,4 +126,13 @@ def atualizar():
     return render_template('listar.html', leituras=lista, titulo='Lista de leituras')
 
 
+@app.route('/excluir/<int:id>')
+def excluir(id):
+    if 'usuario_logado' not in session or session['usuario_logado'] == None:
+        return redirect(url_for('login', proxima=url_for('listar')))
+    leitura_dao.deletar(id)
+    flash('A leitura foi removida com sucesso.')
+    return redirect(url_for('listar'))
+
+
 app.run(debug=True)
