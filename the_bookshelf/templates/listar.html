@@ -1,0 +1,35 @@
+{% extends "template.html" %}
+
+{% block conteudo %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Gênero</th>
+            <th>Sinopse</th>
+            <th>Classificação</th>
+            <th>Data de conclusão</th>
+            <th>ID</th>
+            <th>Editar</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for leitura in leituras %}
+        <tr>
+            <td>{{ leitura.titulo }}</td>
+            <td>{{ leitura.autor }}</td>
+            <td>{{ leitura.genero }}</td>
+            <td>{{ leitura.sinopse }}</td>
+            <td>{{ leitura.classificacao }}</td>
+            <td>{{ leitura.data }}</td>
+            <td>{{ leitura.id }}</td>
+            <td>
+                <a href="{{ url_for('editar', id = leitura.id)}}">Editar</a>
+                <a href="{{ url_for('excluir', id = leitura.id)}}">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
