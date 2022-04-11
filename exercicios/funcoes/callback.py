@@ -1,3 +1,10 @@
+'''
+Definição de callback:
+normalmente assíncrona
+passada como argumento de outra função
+são diferentes de hooks
+'''
+
 def quadrado(x):
     return x**2
 
