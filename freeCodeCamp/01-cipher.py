@@ -1,5 +1,5 @@
-text = 'mrttaqrhknsw ih puggrur'
-custom_key = 'happycoding'
+text = 'abcdef'
+custom_key = 'cba'
 
 def vigenere(message, key, direction=1):
     key_index = 0
@@ -30,9 +30,9 @@ def encrypt(message, key):
 def decrypt(message, key):
     return vigenere(message, key, -1)
 
-print(f'\nEncrypted text: {text}')
+print(f'\nDecrypted text: {text}')
 print(f'Key: {custom_key}')
-decryption = decrypt(text, custom_key)
-print(f'\nDecrypted text: {decryption}\n')
+encryption = encrypt(text, custom_key)
+print(f'\nEncrypted text: {encryption}\n')
 
 # source: https://www.freecodecamp.org/learn/scientific-computing-with-python/learn-string-manipulation-by-building-a-cipher/step-96
