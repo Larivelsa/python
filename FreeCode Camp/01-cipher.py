@@ -1,5 +1,5 @@
-text = 'hello there!'
-custom_key = 'meow'
+text = 'abc'
+custom_key = 'klaus'
 
 def vigenere(message, key, direction=1):
     key_index = 0
