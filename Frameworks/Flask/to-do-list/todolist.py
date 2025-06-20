@@ -1,4 +1,5 @@
 from flask import Flask, render_template, url_for, request, redirect, flash
+import time, secrets
 
 class Tarefa:
     def __init__(self, id, descricao):
@@ -21,7 +22,7 @@ def nova():
 @app.route('/criar', methods=['POST',])
 def criar():
     descricao = request.form['descricao']
-    id = str(len(lista) + 1)
+    id = f'{int(time.time())}{str(secrets.token_hex(3))}' # Gera um ID único com base no tempo e um token aleatório
 
     tarefa = Tarefa(id, descricao)
     lista.append(tarefa)
