@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<h1> {{ titulo }}</h1>
+        <table class="highlight">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Categoria</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for receita in receitas %}
+                <tr>
+                    <td><a href="{{ url_for('ver_receita', id=receita.id) }}">{{ receita.titulo }}</a></td>
+                    <td>{{ receita.categoria.nome }}</td>
+                    <td>
+                        <a href="#">Editar</a>
+                        <a href="#">Deletar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    <a class="btn waves-effect waves-light" href="{{ url_for('inicio') }}">Início</a>
+{% endblock %}

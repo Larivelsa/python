@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block conteudo %}
+
+<h2>{{ receita.titulo }}</h2>
+
+<p><strong>Categoria:</strong> {{ receita.categoria.nome }}</p>
+
+<p><strong>Ingredientes:</strong><br>
+    {{ receita.ingredientes }}</p>
+
+<p><strong>Modo de Preparo:</strong><br>
+    {{ receita.preparo }}</p>
+
+<a class="btn" href="{{ url_for('listar_receita') }}">Voltar à lista de receitas</a>
+
+{% endblock %}

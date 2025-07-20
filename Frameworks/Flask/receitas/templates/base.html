@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Receitas - {{ titulo }}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='materialize.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        {% block conteudo %}{% endblock %}
+    </div>
+    
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='materialize.js') }}"></script>
+        <script>
+        $(document).ready(function(){
+    $('select').formSelect();
+  });
+    </script>
+    </body>
+
+</html>
