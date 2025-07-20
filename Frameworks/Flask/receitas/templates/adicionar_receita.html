@@ -2,34 +2,45 @@
 {% block conteudo %}
 <h1> {{ titulo }}</h1>
 
-<form  action="{{ url_for('crud_criar_receita') }}" method="POST">
-    <div class="input-field">
-        <input type="text" name="titulo" id="titulo">
-        <label for="titulo">Título</label>
-    </div>
+<form action="{{ url_for('crud_criar_receita') }}" method="POST">
+  <div class="input-field">
+    <input type="text" name="titulo" id="titulo">
+    <label for="titulo">Título</label>
+  </div>
 
-    <div class="input-field">
-        <textarea id="ingredientes" name="ingredientes" class="materialize-textarea" data-length="300"></textarea>
-        <label for="ingredientes">Ingredientes</label>
-    </div>
+  <div class="input-field">
+    <textarea id="ingredientes" name="ingredientes" class="materialize-textarea" data-length="300"></textarea>
+    <label for="ingredientes">Ingredientes</label>
+  </div>
 
-    <div class="input-field">
-        <textarea id="preparo" name="preparo" class="materialize-textarea" data-length="1000"></textarea>
-        <label for="preparo">Modo de preparo</label>
-    </div>
+  <div class="input-field">
+    <textarea id="preparo" name="preparo" class="materialize-textarea" data-length="1000"></textarea>
+    <label for="preparo">Modo de preparo</label>
+  </div>
 
   <div class="input-field col s12">
     <select name="categoria" id="categoria">
       <option value="" disabled selected>Escolha uma categoria</option>
-            {% for categoria in categorias %}
-                <option value="{{ categoria.id }}">{{ categoria.nome }}</option>
-            {% endfor %}
+      {% for categoria in categorias %}
+      <option value="{{ categoria.id }}">{{ categoria.nome }}</option>
+      {% endfor %}
     </select>
     <label for="categoria">Categoria</label>
   </div>
 
-    <button class="btn waves-effect waves-light" type="submit">Adicionar receita</button>
-    <a class="btn waves-effect waves-light" href="{{ url_for('inicio') }}">Início</a>
+  <div class="input-field col s12">
+    <figure class="col s1">
+      <img class="responsive-img" src="{{ url_for('imagem', nome_arquivo='capa_padrao.png') }}" alt="Imagem de receitas" id="imagem-preview">
+      <figcaption>
+        <label class="fileContainer">
+          <input type="file" name="arquivo" accept=".jpg,.png">
+        </label>
+      </figcaption>
+    </figure>
+  </div>
+
+  <button class="btn waves-effect waves-light" type="submit">Adicionar receita</button>
+  <a class="btn waves-effect waves-light" href="{{ url_for('inicio') }}">Início</a>
 </form>
 
 
