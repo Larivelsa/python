@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block conteudo %}
+
+<form action="{{ url_for('atualizar_receita', id=receita.id) }}" method="POST">
+    <h1>{{ titulo }}</h1>
+
+    <div class="input-field">
+        <input type="text" name="titulo" id="titulo" value="{{ receita.titulo }}">
+        <label for="titulo">Título</label>
+    </div>
+
+    <div class="input-field">
+        <textarea id="ingredientes" name="ingredientes" class="materialize-textarea"
+            data-length="300">{{ receita.ingredientes }}</textarea>
+        <label for="ingredientes">Ingredientes</label>
+    </div>
+
+    <div class="input-field">
+        <textarea id="preparo" name="preparo" class="materialize-textarea"
+            data-length="1000">{{ receita.preparo }}</textarea>
+        <label for="preparo">Modo de preparo</label>
+    </div>
+
+    <div class="input-field col s12">
+        <select name="categoria" id="categoria">
+            {% for categoria in categorias %}
+            <option value="{{ categoria.id }}" {% if categoria.id==receita.id_categoria %}selected{% endif %}>{{
+                categoria.nome }}</option>
+            {% endfor %}
+        </select>
+        <label for="categoria">Categoria</label>
+    </div>
+
+    <button class="btn waves-effect waves-light" type="submit">Salvar alterações</button>
+    <a class="btn waves-effect waves-light" href="{{ url_for('listar_receita') }}">Voltar</a>
+
+</form>
+{% endblock %}

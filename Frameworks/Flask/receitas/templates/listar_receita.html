@@ -14,8 +14,9 @@
                     <td><a href="{{ url_for('ver_receita', id=receita.id) }}">{{ receita.titulo }}</a></td>
                     <td>{{ receita.categoria.nome }}</td>
                     <td>
-                        <a href="#">Editar</a>
-                        <a href="#">Deletar</a>
+                        <a href="{{ url_for('editar_receita',id=receita.id)}}">Editar</a>
+                        <a href="{{ url_for('deletar_receita',id=receita.id)}}">Deletar</a>
+                        <a href="#"></a>
                     </td>
                 </tr>
                 {% endfor %}

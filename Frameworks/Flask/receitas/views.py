@@ -52,3 +52,26 @@ def crud_criar_receita():
     db.session.add(nova_receita)
     db.session.commit()
     return redirect(url_for('inicio'))
+
+@app.route('/deletar_receita/<int:id>')
+def deletar_receita(id):
+    Receita.query.filter_by(id=id).delete()
+    db.session.commit()
+    return redirect(url_for('listar_receita'))
+
+@app.route('/editar_receita/<int:id>', methods=['GET'])
+def editar_receita(id):
+    receita = Receita.query.filter_by(id=id).first()
+    categorias = Categoria.query.all()
+    return render_template('editar_receita.html', receita=receita, titulo='Editar Receita', categorias=categorias)
+
+@app.route('/atualizar_receita/<int:id>', methods=['POST',])
+def atualizar_receita(id):
+    receita = Receita.query.filter_by(id=id).first()
+    receita.titulo = request.form['titulo']
+    receita.id_categoria = request.form['categoria']
+    receita.ingredientes = request.form['ingredientes']
+    receita.preparo = request.form['preparo']
+    
+    db.session.commit()
+    return redirect(url_for('listar_receita'))
