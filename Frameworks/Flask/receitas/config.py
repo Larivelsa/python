@@ -1,7 +1,6 @@
 import os
 
-SECRET_KEY = 'sentirebene'
-
+SECRET_KEY = 'sentirebene' # secretkey usada no flask e nos formulários anti csrf wtforms
 SQLALCHEMY_DATABASE_URI = \
     '{SGBD}://{usuario}:{senha}@{servidor}/{database}'.format(
         SGBD = 'mysql+mysqlconnector',
