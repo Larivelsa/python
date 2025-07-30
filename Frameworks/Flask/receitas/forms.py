@@ -13,6 +13,7 @@ class ReceitaForm(FlaskForm):
   preparo = StringField('Modo de Preparo', validators=[DataRequired(validators.Length(min=1, max=1000)])]) 
 
 ```
+ver como validação de select field se necessário e o upload no wtforms
 <div class="input-field col s12">
     <select name="categoria" id="categoria">
       <option value="" disabled selected>Escolha uma categoria</option>
