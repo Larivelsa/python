@@ -1,6 +1,11 @@
 from flask import render_template, url_for, redirect, request, send_from_directory
 from app import app, db
 from models import Categoria, Receita
+from forms import ReceitaForm, CategoriaForm
+
+'''
+categoria
+'''
 
 @app.route('/')
 def inicio():
@@ -24,6 +29,11 @@ def crud_criar_categoria():
 def listar_categoria():
     categorias = Categoria.query.all()  # busca todas as categorias
     return render_template('listar_categoria.html', titulo='Categorias', categorias=categorias)
+
+
+'''
+receita
+'''
 
 @app.route('/listar_receita')
 def listar_receita():
