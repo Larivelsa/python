@@ -2,7 +2,7 @@
 {% block conteudo %}
 <h1> {{ titulo }}</h1>
 
-<form action="{{ url_for('crud_criar_receita') }}" method="POST">
+<form action="{{ url_for('adicionar_receita') }}" method="POST">
   <div class="input-field">
     <input type="text" name="titulo" id="titulo">
     <label for="titulo">Título</label>
@@ -43,4 +43,9 @@
   <a class="btn waves-effect waves-light" href="{{ url_for('inicio') }}">Início</a>
 </form>
 
+<<<<<<< HEAD
 {% endblock %}
+=======
+
+{% endblock %}
+>>>>>>> d5fc3c15d3d721d290553e7037d74d2de434627f

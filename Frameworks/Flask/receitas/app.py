@@ -6,7 +6,8 @@ app.config.from_pyfile('config.py')
 
 db = SQLAlchemy(app)
 
-from views import *
+from views_receita import *
+from views_categoria import *
 
 if __name__ == '__main__':
     app.run(debug=True)
