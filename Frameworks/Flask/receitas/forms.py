@@ -1,15 +1,16 @@
-from flask_wtf import Flaskform
-from wtforms import StringField, SubmitField # .validators é o nome do submódulo (ou pacote interno) da biblioteca wtforms que contém as classes de validação, como DataRequired, Length, Email, etc
-from wtforms.validators importe DataRequired
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from flask_wtf.file import FileField, FileRequired
+from wtforms.validators import DataRequired, Length
 
 class CategoriaForm(FlaskForm):
-  nome = StringField('Nome', validators=[DataRequired(validators.Length(min=1, max=40)])])
-  enviar = SubmitField('Adicionar categoria')
+    nome = StringField('Nome', validators=[DataRequired(), Length(min=1, max=40)])
+    enviar = SubmitField('Adicionar categoria')
 
 class ReceitaForm(FlaskForm):
-  titulo = StringField('Título', validators=[DataRequired(min=1, max=50)])
-  ingredientes = StringField('Ingredientes', validators=[DataRequired(validators.Length(min=1, max=1000)])]) 
-  preparo = StringField('Modo de Preparo', validators=[DataRequired(validators.Length(min=1, max=1000)])]) 
-  categoria = Stringfield('Categoria', validators=[DataRequired()])
-  imagem = FileField(validators=[FileRequired()]) 
-  enviar = SubmitField('Adicionar receita')
+    titulo = StringField('Título', validators=[DataRequired(), Length(min=1, max=50)])
+    ingredientes = StringField('Ingredientes', validators=[DataRequired(), Length(min=1, max=1000)])
+    preparo = StringField('Modo de Preparo', validators=[DataRequired(), Length(min=1, max=1000)])
+    categoria = StringField('Categoria', validators=[DataRequired()])
+    imagem = FileField('Imagem', validators=[FileRequired()])
+    enviar = SubmitField('Adicionar receita')
