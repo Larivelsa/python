@@ -3,6 +3,12 @@
 
 <h2>{{ receita.titulo }}</h2>
 
+  <div class="input-field col s12">
+    <figure class="col s1">
+      <img class="materialboxed" width="650" src="{{ url_for('imagem', nome_arquivo='capa_padrao.png') }}" alt="Imagem de receitas" id="imagem-preview">
+    </figure>
+  </div>
+
 <p><strong>Categoria:</strong> {{ receita.categoria.nome }}</p>
 
 <p><strong>Ingredientes:</strong><br>

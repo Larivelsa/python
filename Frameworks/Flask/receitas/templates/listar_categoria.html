@@ -14,7 +14,7 @@
                     <td>{{ categoria.nome }}</td>
                     <td>
                         <a href="#">Editar</a>
-                        <a href="#">Deletar</a>
+                        <a href="{{ url_for('deletar_categoria',id=categoria.id) }}">Deletar</a>
                     </td>
                 </tr>
                 {% endfor %}

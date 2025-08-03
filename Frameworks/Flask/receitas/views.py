@@ -25,6 +25,12 @@ def listar_categoria():
     categorias = Categoria.query.all()  # busca todas as categorias
     return render_template('listar_categoria.html', titulo='Categorias', categorias=categorias)
 
+@app.route('/deletar_categoria/<int:id>')
+def deletar_categoria(id):
+    Categoria.query.filter_by(id=id).delete()
+    db.session.commit()
+    return redirect(url_for('listar_categoria'))
+
 @app.route('/listar_receita')
 def listar_receita():
     receitas = Receita.query.all()  # busca todas as categorias
