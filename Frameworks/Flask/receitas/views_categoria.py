@@ -3,6 +3,11 @@ from app import app, db
 from models import Categoria
 from forms import CategoriaForm
 
+
+@app.route('/')
+def inicio():
+    return render_template('index.html')
+
 @app.route('/categorias/nova')
 def adicionar_categoria_form():
     return render_template('adicionar_categoria_form.html',titulo='Adicionar categoria')
@@ -19,6 +24,12 @@ def salvar_categoria():
 def listar_categoria():
     categorias = Categoria.query.all()
     return render_template('listar_categoria.html', titulo='Categorias', categorias=categorias)
+
+
+@app.route('/categorias/editar/<int:id>')
+def editar_receita_form(id):
+    categoria = Categoria.query.filter_by(id=id).first()
+    return render_template('editar_categoria_form.html', titulo='Editar Categoria', categorias=categorias)        
 
 '''
 GET /categorias para listar
