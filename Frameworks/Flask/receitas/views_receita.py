@@ -2,6 +2,10 @@ from flask import render_template, url_for, redirect, request, send_from_directo
 from app import app, db
 from models import Receita, Categoria
 
+@app.route('/')
+def inicio():
+    return render_template('index.html')
+    
 @app.route('/listar_receita')
 def listar_receita(): 
     receitas = Receita.query.all()  # busca todas as categorias

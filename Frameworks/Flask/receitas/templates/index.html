@@ -4,7 +4,7 @@
     <p>Esta é uma aplicação Flask simples para gerenciar uma coleção de receitas.</p>
     <p>Você pode adicionar, editar e excluir receitas da sua coleção.</p>
     <a class="btn waves-effect waves-light" href="{{ url_for('adicionar_receita') }}">Adicionar receita</a>
-    <a class="btn waves-effect waves-light" href="{{ url_for('mostrar_form_categoria') }}">Adicionar categoria</a>
+    <a class="btn waves-effect waves-light" href="{{ url_for('adicionar_categoria_form') }}">Adicionar categoria</a>
     <a class="btn waves-effect waves-light" href="{{ url_for('listar_receita') }}">Ver receitas</a>
     <a class="btn waves-effect waves-light" href="{{ url_for('listar_categoria') }}">Ver categoria</a>
 {% endblock %}
