@@ -11,19 +11,19 @@ categoria
 def inicio():
     return render_template('index.html')
 
-@app.route('/adicionar_categoria')
-def adicionar_categoria():
+@app.route('/categorias/nova')
+def mostrar_form_categoria():
     return render_template('adicionar_categoria.html',titulo='Adicionar categoria')
 
-@app.route('/crud_criar_categoria', methods=['POST'])
-def crud_criar_categoria():
+@app.route('/categorias', methods=['POST'])
+def salvar_categoria():
     nome_categoria = request.form['nome_categoria']
     
     nova_categoria = Categoria(nome=nome_categoria)
     db.session.add(nova_categoria)
     db.session.commit()
 
-    return redirect(url_for('inicio'))
+    return redirect(url_for('listar_categoria'))
 
 @app.route('/listar_categoria')
 def listar_categoria():
