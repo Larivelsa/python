@@ -1,6 +1,6 @@
-- criar o editar de categoria
-- fazer o login para editar categoria e receita
+- criar o editar de categoria ok
 - validar os formulários
 - funcionalidade inserir imagem
 - visualizar imagem na receita
 - visualizar thumbnail da imagem na lista
+- fazer o login para editar categoria e receita

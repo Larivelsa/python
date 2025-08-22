@@ -57,7 +57,6 @@ def atualizar_receita(id):
     db.session.commit()
     return redirect(url_for('listar_receita'))
 
-
 @app.route('/uploads/<nome_arquivo>')
 def imagem(nome_arquivo):
     return send_from_directory('uploads', nome_arquivo)
