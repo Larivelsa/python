@@ -4,3 +4,5 @@
 - visualizar imagem na receita
 - visualizar thumbnail da imagem na lista
 - fazer o login para editar categoria e receita
+
+- ver erro ao excluir chave estrangeira

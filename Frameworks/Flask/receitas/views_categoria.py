@@ -3,7 +3,6 @@ from app import app, db
 from models import Categoria
 from forms import CategoriaForm
 
-
 @app.route('/')
 def inicio():
     return render_template('index.html')
@@ -19,7 +18,8 @@ def adicionar_categoria_form():
 
 @app.route('/categorias/nova', methods=['POST'])
 def adicionar_categoria():
-    nome_categoria = request.form['nome_categoria']
+    nome = request.form['nome']
+    nova_categoria = Categoria(nome=nome)
     db.session.add(nova_categoria)
     db.session.commit()
     return redirect(url_for('listar_categoria'))
@@ -27,23 +27,22 @@ def adicionar_categoria():
 @app.route('/categorias/editar/<int:id>')
 def editar_categoria_form(id):
     categoria = Categoria.query.filter_by(id=id).first()
-    return render_template('editar_categoria_form.html', titulo='Editar Categoria', categorias=categorias)    
+    return render_template('editar_categoria_form.html', titulo='Editar Categoria', categoria=categoria)    
 
 @app.route('/categorias/editar/<int:id>', methods=['POST'])
-def atualizar_receita(id):
-    receita = Receita.query.filter_by(id=id).first()
-    receita.titulo = request.form['titulo']
-    receita.id_categoria = request.form['categoria']
-    receita.ingredientes = request.form['ingredientes']
-    receita.preparo = request.form['preparo']
-    db.session.commit()
-    return redirect(url_for('listar_receita'))   
+def editar_categoria(id):
+    categoria = Categoria.query.filter_by(id=id).first()
+    categoria.nome = request.form['nome']
 
-@app.route('/deletar_receita/<int:id>')
-def deletar_receita(id):
-    Receita.query.filter_by(id=id).delete()
+    editar_categoria = CategoriaForm(request.form)
     db.session.commit()
-    return redirect(url_for('listar_receita'))        
+    return redirect(url_for('listar_categoria'))   
+
+@app.route('/categorias/deletar/<int:id>')
+def deletar_categoria(id):
+    Categoria.query.filter_by(id=id).delete()
+    db.session.commit()
+    return redirect(url_for('listar_categoria'))        
 
 '''
 GET /categorias para listar
