@@ -28,7 +28,7 @@ TABLES = {}
 TABLES['Categoria'] = ('''
       CREATE TABLE `categoria` (
       `id` int(11) NOT NULL AUTO_INCREMENT,
-      `nome` varchar(20) NOT NULL,
+      `nome` varchar(40) NOT NULL,
       PRIMARY KEY (`id`)
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;''')
 

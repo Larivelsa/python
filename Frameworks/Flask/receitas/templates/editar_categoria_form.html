@@ -4,6 +4,7 @@
 <form action="{{ url_for('editar_categoria', id=categoria.id) }}" method="POST">
     <h1>{{ titulo }}</h1>
 
+    
     <div class="input-field">
         <input type="text" name="nome" id="nome" value="{{ categoria.nome }}">
         <label for="nome">Nome</label>
