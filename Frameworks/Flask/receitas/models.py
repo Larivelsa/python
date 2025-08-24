@@ -3,7 +3,7 @@ from app import db
 class Receita(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     titulo = db.Column(db.String(50), nullable=False)
-    id_categoria = db.Column(db.Integer, db.ForeignKey('categoria.id'), nullable=False)
+    id_categoria = db.Column(db.Integer, db.ForeignKey('categoria.id', ondelete='SET NULL'), nullable=True)
     ingredientes = db.Column(db.Text, nullable=False)
     preparo = db.Column(db.Text, nullable=False)
 

@@ -35,12 +35,12 @@ TABLES['Categoria'] = ('''
 TABLES['Receita'] = ('''
       CREATE TABLE `receita` (
       `id` int(11) NOT NULL AUTO_INCREMENT,
-      `id_categoria` int(11) NOT NULL,
+      `id_categoria` int(11),
       `titulo` varchar(50) NOT NULL,
       `ingredientes` varchar(500) NOT NULL,
       `preparo` varchar(500) NOT NULL,
       PRIMARY KEY (`id`),
-      FOREIGN KEY (`id_categoria`) REFERENCES `categoria`(id) 
+      FOREIGN KEY (`id_categoria`) REFERENCES `categoria`(id) ON DELETE SET NULL
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;''')
 
 for tabela_nome in TABLES:
@@ -56,6 +56,26 @@ for tabela_nome in TABLES:
       else:
             print('OK')
 
+# populando categorias
+categorias = [
+    ('Sobremesa',),
+    ('Bebida',),
+    ('Massa',),
+    ('Sem categoria',)  # categoria padrão
+]
+cursor.executemany("INSERT INTO categoria (nome) VALUES (%s)", categorias)
+
+# populando receitas
+receitas = [
+    (1, 'Bolo de Chocolate', 'Farinha, ovos, leite, chocolate em pó, açúcar', 'Misturar tudo e assar.'),
+    (2, 'Suco de Laranja', 'Laranjas, açúcar, água', 'Espremer laranjas e misturar com água e açúcar.'),
+    (3, 'Macarrão ao Molho Branco', 'Macarrão, leite, queijo parmesão, manteiga, noz-moscada', 'Cozinhar macarrão, preparar molho branco e misturar.'),
+    (None, 'Receita sem categoria', 'Ingrediente X, Ingrediente Y', 'Misturar e servir.')  # sem categoria
+]
+cursor.executemany(
+    "INSERT INTO receita (id_categoria, titulo, ingredientes, preparo) VALUES (%s, %s, %s, %s)",
+    receitas
+)
 
 # commitando se não nada tem efeito
 conn.commit()

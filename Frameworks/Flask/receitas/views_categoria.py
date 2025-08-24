@@ -42,16 +42,4 @@ def editar_categoria(id):
 def deletar_categoria(id):
     Categoria.query.filter_by(id=id).delete()
     db.session.commit()
-    return redirect(url_for('listar_categoria'))        
-
-'''
-GET /categorias para listar
-
-POST /categorias para criar
-
-GET /categorias/<id> para visualizar uma categoria especifica
-
-PUT /categorias/<id> para atualizar
-
-DELETE /categorias/<id> para deletar
-'''
+    return redirect(url_for('listar_categoria'))
