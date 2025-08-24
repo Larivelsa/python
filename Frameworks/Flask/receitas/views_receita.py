@@ -15,7 +15,7 @@ def ver_receita(id):
 @app.route('/receitas/adicionar')
 def adicionar_receita_form():
     categorias = Categoria.query.all()  # busca todas as categorias do banco
-    return render_template('adicionar_receita.html', titulo='Adicionar receita', categorias=categorias)
+    return render_template('adicionar_receita_form.html', titulo='Adicionar receita', categorias=categorias)
 
 
 @app.route('/receitas/adicionar', methods=['POST'])

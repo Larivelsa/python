@@ -1,7 +1,7 @@
 from flask import render_template, url_for, redirect, request, send_from_directory
 from app import app, db
 from models import Categoria
-from forms import CategoriaForm
+from forms import AdicionarCategoriaForm
 
 @app.route('/')
 def inicio():
