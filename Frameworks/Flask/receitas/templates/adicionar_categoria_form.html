@@ -3,8 +3,6 @@
 <h1> {{ titulo }}</h1>
 
 <form action="{{ url_for('adicionar_categoria') }}" method="POST">
-
-
     <fieldset>
           {{ form.csrf_token() }}
           <div class="input-field">
@@ -16,7 +14,6 @@
             {{ form.salvar(class="btn waves-effect waves-light") }}
 
     <a class="btn waves-effect waves-light" href="{{ url_for('inicio') }}">Início</a>
+    </fieldset>
 </form>
-
-
 {% endblock %}
