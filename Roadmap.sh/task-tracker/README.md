@@ -46,5 +46,5 @@ python task_tracker.py update 1 "Buy fruits and veggies"
 python task_tracker.py delete 1
 
 ```
-Font: [Task Tracker from Roadmap.sh](https://roadmap.sh/projects/task-tracker)
+**🔗 Project URL:** [https://roadmap.sh/projects/task-tracker](https://roadmap.sh/projects/task-tracker)
 
