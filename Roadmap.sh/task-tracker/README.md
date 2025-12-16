@@ -20,8 +20,15 @@ Task Tracker is a small CLI tool to help you manage daily tasks — add, list, u
 - No external dependencies (only built-in Python modules — e.g. `json`, `argparse` or `sys`)  
 
 ## Usage
+This is a command-line application and must be executed from a terminal.
 
-Run from the command line:
+To run the program, make sure Python 3.7 or higher is installed on your system.
+
+Navigate to the project folder and execute the following command:
+
+python main.py <command> [arguments]
+
+Exemples:
 
 ```bash
 # Add a new task

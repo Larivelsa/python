@@ -1,2 +1,2 @@
 @echo off
-python "%~dp0task-cli.py" %*
+python "%~dp0main.py" %*
