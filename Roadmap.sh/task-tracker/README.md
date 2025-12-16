@@ -26,7 +26,9 @@ To run the program, make sure Python 3.7 or higher is installed on your system.
 
 Navigate to the project folder and execute the following command:
 
+```bash
 python main.py <command> [arguments]
+```
 
 Exemples:
 
