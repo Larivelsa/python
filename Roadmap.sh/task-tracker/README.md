@@ -45,5 +45,7 @@ python task_tracker.py update 1 "Buy fruits and veggies"
 # Delete a task (ID 1)
 python task_tracker.py delete 1
 
+
+
 Font: https://roadmap.sh/projects/task-tracker
 
