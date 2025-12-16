@@ -1,4 +1,5 @@
 *.vscode
 *.json
 *.txt
+*.git
 __pycache__
