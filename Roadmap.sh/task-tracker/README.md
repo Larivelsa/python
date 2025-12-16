@@ -1,4 +1,5 @@
 # Task Tracker
+[Task Tracker from Roadmap.sh](https://roadmap.sh/projects/task-tracker)
 
 A simple command-line based Task Tracker application written in Python.
 
@@ -46,5 +47,5 @@ python task_tracker.py update 1 "Buy fruits and veggies"
 python task_tracker.py delete 1
 
 ```
-Font: [Task Tracker from Roadmap.sh](https://roadmap.sh/projects/task-tracker)
+
 
